@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,700,700italic,900,italic,regular&amp;subset=latin" type="text/css" rel="stylesheet" media="all" />
+  <style>
+    body { /* core pub responso styles match */ color:#3d3d3d; font-family:"Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight:normal; font-style:normal; line-height:1; letter-spacing:0.005em; word-spacing:0.025em; }
+    .jp-interface{background:#FFFFFF;border-radius:3px;border:1px solid rgba(0,0,0,0.075);border-bottom:5px solid rgba(0,0,0,0.075);box-sizing:border-box;padding:8px;position:relative;}
+    button.jp-play,button.jp-pause{border:2px solid rgba(0,0,0,.1);border-radius:50%;background-color:rgba(255,255,255,.2);background-image:url(http://digital.vpr.net/sites/all/modules/custom/pi_hull/jplayer/images/playpause-sprite-r.png);background-repeat:no-repeat;background-size:50%;box-sizing:border-box;color:#333;display:block;font-family:Helvetica,Arial,sans-serif;font-size:18px;font-weight:bold;height:44px;line-height:26px;position:relative;text-indent:-9999em;transition:all .2s;-webkit-transition:all .2s;white-space:nowrap;width:44px;*zoom:1;margin:0;}
+    button.jp-play{background-position:.7em .5em;}
+    button.jp-pause{background-position:.7em -2.1em;display:none;}
+    button.jp-play:hover,button.jp-pause:hover{background-color:rgba(255,255,255,.5);border:2px solid rgba(0,0,0,.15);}
+    .listen-text{color:rgba(0,0,0,0.6);font-size:17px;font-weight:400;left:60px;top:14px;opacity:2;position:absolute;text-shadow:1px 1px 0 rgba(255,255,255,0.9);transition:opacity .25s ease-in-out;}
+    .jp-seek-bar{background:transparent;bottom:0;cursor:pointer;height:12px;margin:0 auto;overflow:visible;padding-top:4px;position:absolute;top:30px;left:60px;width:80% !important;}
+    .jp-play-bar{background:#168dd9;bottom:0;height:7px;top:1px;overflow:visible;position:relative;}
+    .jp-current-time{border:0;display:none;line-height:12px;margin-right:0;padding:0;position:static;width:auto;}
+    .jp-duration{padding:0;position:absolute;font-size:14px;right:40px;top:17px;width:auto;opacity: 0.5;}
+    @media (max-width:440px) {.jp-duration{top:44px;left:60px;}}
+  </style>
+  <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="./static/js/jquery.jplayer.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+          $(this).jPlayer("setMedia", {
+            title: "VPR Newscast",
+            mp3: "http://www.vpr.net/mobile/vprnewscast.mp3"
+          });
+        },
+        cssSelectorAncestor: "#jp_container_1",
+        swfPath: "/js",
+        supplied: "mp3",
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        remainingDuration: true,
+        toggleDuration: true
+      });
+    });
+ </script>
+</head>
+
+<body>
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+    <div class="jp-type-single">
+      <div class="jp-gui jp-interface">
+        <div class="jp-controls-holder">
+            <div class="listen-text">{{ timestamp }}</div>
+            <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+            <div class="jp-controls">
+              <button class="jp-play" role="button" tabindex="0">play</button>
+              <button class="jp-pause" role="button" tabindex="0">stop</button>
+            </div>
+            <div class="jp-progress">
+              <div class="jp-seek-bar">
+                <div class="jp-play-bar"></div>
+              </div>
+            </div>
+          <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(window).load(function() {
+            pymChild = new pym.Child({});
+    });
+  </script>
+</body>
+
+</html>
