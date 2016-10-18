@@ -4,8 +4,8 @@ from query import get_timestamp
 from config import BASE_URL
 
 results = get_timestamp()
-test = str(results)
-timestamp = test[:19] + test[22:]
+cleaned_time = str(results)
+timestamp = cleaned_time[:19] + cleaned_time[22:]
 
 @app.route("/")
 def index():
