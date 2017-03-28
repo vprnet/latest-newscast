@@ -1,9 +1,16 @@
 #!/usr/bin/python
-
-import eyed3
-import urllib
+import feedparser
 
 def get_timestamp():
-    audiofile, headers = urllib.urlretrieve("http://www.vpr.net/mobile/vprnewscast.mp3")
-    source = eyed3.load(audiofile)
-    return source.tag.title
+    latest_newscast_feed = "https://podcasts.vpr.net/newscasts"
+    parsed_feed = feedparser.parse(latest_newscast_feed)
+
+    return parsed_feed["date"]
+
+def create_title():
+    
+    return str("VPR Newscast: ") + get_timestamp()
+
+
+# what it gives: Mon, 27 Mar 2017 16:20:36 GMT
+# what i want: VPR Newscast: 03/27/17 12:20 p.m.
