@@ -1,9 +1,9 @@
 from index import app
 from flask import render_template, request
-from query import create_title
+from query import get_timestamp
 from config import BASE_URL
 
-newscast_title = create_title()
+newscast_title = get_timestamp()
 
 @app.route("/")
 def index():

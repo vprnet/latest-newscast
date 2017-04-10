@@ -4,13 +4,6 @@ import feedparser
 def get_timestamp():
     latest_newscast_feed = "https://podcasts.vpr.net/newscasts"
     parsed_feed = feedparser.parse(latest_newscast_feed)
+    parsed_title = parsed_feed["items"][0]["title"]
 
-    return parsed_feed["date"]
-
-def create_title():
-    
-    return str("VPR Newscast: ") + get_timestamp()
-
-
-# what it gives: Mon, 27 Mar 2017 16:20:36 GMT
-# what i want: VPR Newscast: 03/27/17 12:20 p.m.
+    return "Latest" + parsed_title.replace("VPR", "").replace("Newscast", "Newscast: ").replace("for", "").replace("at", "").replace("/2017", "")
