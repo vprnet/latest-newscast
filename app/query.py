@@ -6,7 +6,7 @@ def get_timestamp():
     parsed_feed = feedparser.parse(latest_newscast_feed)
     parsed_title = parsed_feed["items"][0]["title"]
 
-    return parsed_title.replace("Newscast", "Newscast: ").replace("for", "").replace("at", "").replace("/2017", "")
+    return parsed_title
 
 def get_latest_episode():
     latest_newscast_feed = "https://podcasts.vpr.net/newscasts"
