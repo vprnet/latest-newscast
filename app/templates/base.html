@@ -41,6 +41,18 @@
         toggleDuration: true
       });
     });
+
+    $(document).on('ready', function(){
+      $('jp-play').on('play', function(audio){
+        $eventLabel = $(this).data('file');
+        ga('site1.send', {
+          hitType:'event',
+          eventCategory: 'Engagement',
+          eventAction: 'In line audio-play',
+          eventLabel: $eventLabel
+        });
+      });
+    });
  </script>
 </head>
 
