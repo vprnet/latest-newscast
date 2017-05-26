@@ -45,7 +45,7 @@
     $(document).on('ready', function(){
       $('jp-play').on('play', function(audio){
         $eventLabel = $(this).data('file');
-        ga('site1.send', {
+        cpTags.gaAll('send', {
           hitType:'event',
           eventCategory: 'Engagement',
           eventAction: 'In line audio-play',
