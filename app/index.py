@@ -30,12 +30,9 @@ class WebFactionMiddleware(object):
 app.wsgi_app = WebFactionMiddleware(app.wsgi_app)
 
 if __name__ == '__main__':
-    try:
-        if len(sys.argv) > 1 and sys.argv[1] == 'build':
-            freezer = Freezer(app)
-            freezer.freeze()
-            set_metadata()
-        else:
-            app.run(debug=True)
-    except IndexError:
-        pass
+    if len(sys.argv) > 1 and sys.argv[1] == 'build':
+        freezer = Freezer(app)
+        freezer.freeze()
+        set_metadata()
+    else:
+        app.run(debug=True)
